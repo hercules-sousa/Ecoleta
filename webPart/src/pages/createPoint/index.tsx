@@ -110,7 +110,9 @@ const CreatePoint = () => {
     }
 
     async function handleSubmit(event: FormEvent){
-		event.preventDefault()
+        event.preventDefault()
+        
+        console.log('handling submit')
         
         const { name, email, whatsapp } = formData
         const uf = selectedUf
@@ -131,11 +133,19 @@ const CreatePoint = () => {
 		
 		if (selectedFile) {
 			data.append('image', selectedFile)
-		}
+        }
+        
+        let status
 
         await api.post("points", data)
-        
-        history.push("/")
+            .then(response => {
+                status = true
+            })
+            .catch(error => {
+                status = false
+            })
+
+        history.push("/feedback")
     }
 
     return (
@@ -167,6 +177,7 @@ const CreatePoint = () => {
                             name="name"
                             id="name"
                             onChange={handleInputChange}
+                            autoComplete='off'
                         />
                     </div>
 
@@ -178,6 +189,7 @@ const CreatePoint = () => {
                                 name="email"
                                 id="email"
                                 onChange={handleInputChange}
+                                autoComplete='off'
                             />
                         </div>
 
@@ -188,6 +200,7 @@ const CreatePoint = () => {
                                 name="whatsapp"
                                 id="whatsapp"
                                 onChange={handleInputChange}
+                                autoComplete='off'
                             />
                         </div>
                     </div>
