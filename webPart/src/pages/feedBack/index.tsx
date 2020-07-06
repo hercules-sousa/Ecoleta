@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const FeedBack = () => {
-    return (
-        <div>
-            <h1>Feedback page</h1>
-        </div>
-    )
-}
+	return (
+		<div>
+			<h1>Feedback page</h1>
+		</div>
+	);
+};
 
-export default FeedBack
+export default FeedBack;
